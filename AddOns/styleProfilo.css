@@ -1,0 +1,377 @@
+/*    --------------------------------------------------
+	:: General
+	-------------------------------------------------- */
+
+        body, html{
+            height: 100%;
+            background-repeat: no-repeat;
+            background:url(background.png);
+            font-family: 'Oxygen', sans-serif;
+            background-size: cover;
+            overflow:hidden;
+       }
+    .content h1 {
+        text-align: center;
+    }
+    .content .content-footer p {
+        color: #6d6d6d;
+        font-size: 12px;
+        text-align: center;
+    }
+    .content .content-footer p a {
+        color: inherit;
+        font-weight: bold;
+    }
+    
+    /*	--------------------------------------------------
+        :: Table Filter
+        -------------------------------------------------- */
+    .panel {
+        border: 1px solid #ddd;
+        background-color: #dae7f0;
+        
+    position: absolute;
+    top: 29000%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 30px;
+    width: 130%;
+    height: 450px;
+    padding: 20px;
+    text-align: center; 
+    overflow-y:scroll;
+    }
+    .panel .btn-group {
+        margin: 15px 0 30px;
+    }
+    .panel .btn-group .btn {
+        transition: background-color .3s ease;
+    }
+    .table-filter {
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+    .table-filter tbody tr:hover {
+        cursor: pointer;
+        background-color: #eee;
+    }
+    .table-filter tbody tr td {
+        padding: 10px;
+        vertical-align: middle;
+        border-top-color: #eee;
+    }
+    .table-filter tbody tr.selected td {
+        background-color: #eee;
+    }
+    
+    .table-filter tr td:first-child {
+        width: 38px;
+    }
+    .table-filter tr td:nth-child(2) {
+        width: 35px;
+    }
+    .ckbox {
+        position: relative;
+    }
+    .ckbox input[type="checkbox"] {
+        opacity: 0;
+    }
+    .ckbox label {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .ckbox label:before {
+        content: '';
+        top: 1px;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
+        border-radius: 2px;
+        border: 1px solid #bbb;
+        background-color: #fff;
+    }
+    .ckbox input[type="checkbox"]:checked + label:before {
+        border-color: #2BBCDE;
+        background-color: #2BBCDE;
+    }
+    .ckbox input[type="checkbox"]:checked + label:after {
+        top: 3px;
+        left: 3.5px;
+        content: '\e013';
+        color: #fff;
+        font-size: 11px;
+        font-family: 'Glyphicons Halflings';
+        position: absolute;
+    }
+    .ckboxPart {
+        position: relative;
+    }
+    .ckboxPart input[type="checkbox"] {
+        opacity: 0;
+    }
+    .ckboxPart label {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .ckboxPart label:before {
+        content: '';
+        top: 1px;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
+        border-radius: 2px;
+        border: 1px solid #bbb;
+        background-color: #fff;
+    }
+    .ckboxPart input[type="checkbox"]:checked + label:before {
+        border-color: #2BBCDE;
+        background-color: #2BBCDE;
+    }
+    .ckboxPart input[type="checkbox"]:checked + label:after {
+        top: 3px;
+        left: 3.5px;
+        content: '\e013';
+        color: #fff;
+        font-size: 11px;
+        font-family: 'Glyphicons Halflings';
+        position: absolute;
+    }
+    .table-filter .star {
+        color: #ccc;
+        text-align: center;
+        display: block;
+    }
+    .table-filter .star.star-checked {
+        color: #F0AD4E;
+    }
+    .table-filter .star:hover {
+        color: #ccc;
+    }
+    .table-filter .star.star-checked:hover {
+        color: #F0AD4E;
+    }
+    .table-filter .media-photo {
+        width: 35px;
+    }
+    
+    .table-filter .media-meta {
+        font-size: 13px;
+        color: #999;
+    }
+    .table-filter .media .title {
+        color: #2BBCDE;
+        font-size: 17px;
+        font-weight: bold;
+        line-height: normal;
+        margin: 0;
+    }
+    .table-filter .media .title span {
+        font-size: .8em;
+        margin-right: 20px;
+    }
+    .table-filter .media .title span.incorso {
+        color: #5cb85c;
+    }
+    .table-filter .media .title span.inscadenza {
+        color: #f0ad4e;
+    }
+    .table-filter .media .title span.scaduti {
+        color: #d9534f;
+    }
+    .table-filter .media .summary {
+        font-size: 16px;
+    }
+
+    .title-wrapper{
+        position: absolute;
+        left:50px !important;
+    }
+    
+    .blue-square{
+        background: #006be5;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width:50px;
+    }
+    
+    .toolbar-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 30;
+        border-bottom: 1px solid #d1d1d1;
+        box-sizing: border-box;
+    }
+    
+    .toolbar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        background-color: #f5f5f5;
+    }
+        
+    .toolbar-left{
+        left: 0;
+        width: 18em;
+        z-index: 2;
+    }
+    
+    .toolbar-center{
+        left: 18em;
+        right: 8em;
+        z-index: 2;
+    }
+    
+    .toolbar-right {
+        right: 0;
+        width: 8em;
+        z-index: 2;
+    }
+
+    /*	--------------------------------------------------
+        :: Curtain Menu
+        -------------------------------------------------- */
+.overlay {  
+    height: 0;
+    width: 40%;
+    position: absolute; 
+    z-index: 1; 
+    left: 2%;
+    top: 6.4%;
+    background-color: rgb(151, 184, 245); 
+    background-color: rgba(198, 217, 252, 0.9); 
+    border: 0px;
+    overflow: hidden;
+    transition: 0.5s; 
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%; 
+    width: 100%; 
+    text-align: center; 
+    margin-top: 30px; 
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; 
+    transition: 0.3s; 
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+}
+
+.input-group {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    position: relative; 
+    left: 15%;
+    top: 6%;
+    width: 70%;
+    margin-bottom: 15px;
+}
+
+.form-control {
+    height: auto!important;
+    padding: 8px 12px !important;
+}
+
+.small-text{
+    color: rgb(130, 130, 130);
+    position: relative; 
+    left: 15%;
+    top: 6%;
+    width: 70%;
+    font-weight: bold;
+    margin-bottom: 15px;
+    width: 90%;
+}
+
+
+.login-button{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    position: relative; 
+    left: 15%;
+    top: 30px;
+    width: 70%;
+    margin-bottom: 15px;
+}
+
+.overlayMenu {
+    position: absolute;
+    z-index: 1;
+    left: 95.5%;
+    top: 6.4%;
+    width: 42.3%;
+    height: 92.6%;
+    padding: 20px;
+    text-align: center; 
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+
+.overlayMenu-content {
+    position: relative;
+    left: 10%;
+    width: 85%; 
+    text-align: center;
+}
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+  }
+  .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
