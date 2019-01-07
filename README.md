@@ -1,6 +1,6 @@
 # ProHive
-ProHive, an advanced co-working environment
-Current Features of ProHive V1.0:
+ProHive, an advanced co-working environment.
+Current Features as of ProHive V1.0:
 - Registration and Login Features, updating database:
   - Create account, change password;
   - Send feedbacks;
