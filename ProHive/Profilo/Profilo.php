@@ -6,7 +6,7 @@
         echo "<script type='text/javascript'>alert('Stai cercando di visualizzare una pagina non visualizzabile dopo aver effettuato il logout!'); window.location.href='../../index.html';</script>";
         exit();
     }
-?>  
+?>
 
 <html>
     <head>
@@ -17,10 +17,10 @@
 
         <link href="../AddOns/styleProfilo.css" rel="stylesheet">
         <script src="../AddOns/funcProf.js"></script>
-        
 
-        <title>ProHive</title>  
-        
+
+        <title>ProHive</title>
+
         <script type="text/javascript">
             function richiestaEliminazione() {
                 var checks = document.getElementsByName('ck');
@@ -33,22 +33,22 @@
                         titles.push(currenttitle);
                     }
                 }
-                
+
                 var xhr;
-                if (window.XMLHttpRequest) { 
+                if (window.XMLHttpRequest) {
                     xhr = new XMLHttpRequest();
-                } else if (window.ActiveXObject) { 
+                } else if (window.ActiveXObject) {
                     xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 var data = "mail="+document.getElementById('mailUt').innerHTML + "&titoli=" + titles;
-                xhr.open("POST", "elimina.php", true); 
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
+                xhr.open("POST", "elimina.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send(data);
 	            xhr.onreadystatechange = display_data;
 	            function display_data() {
 	                if (xhr.readyState == 4) {
                         if (xhr.status == 200) {
-                            alert(xhr.responseText);	   
+                            alert(xhr.responseText);
                             window.location.reload();
                         } else {
                             alert('There was a problem with the request.');
@@ -69,22 +69,22 @@
                     }
                 }
 
-                
+
                 var xhr;
-                if (window.XMLHttpRequest) { 
+                if (window.XMLHttpRequest) {
                     xhr = new XMLHttpRequest();
-                } else if (window.ActiveXObject) { 
+                } else if (window.ActiveXObject) {
                     xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 var data = "mail="+document.getElementById('mailUt').innerHTML + "&titoli=" + titles;
-                xhr.open("POST", "abbandona.php", true); 
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
+                xhr.open("POST", "abbandona.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send(data);
 	            xhr.onreadystatechange = display_data;
 	            function display_data() {
 	                if (xhr.readyState == 4) {
                         if (xhr.status == 200) {
-                            alert(xhr.responseText);	   
+                            alert(xhr.responseText);
                             window.location.reload();
                         } else {
                             alert('There was a problem with the request.');
@@ -115,7 +115,7 @@
                   </nav>
                   <p id='changeResult'></p>
                   <p hidden id="mailUt"><?php echo $_SESSION['utenteMail']?> </p>
-                  
+
         <div class="container">
             <div class="row">
                 <section class="content">
@@ -164,21 +164,21 @@
                         <h3 style='text-align:center'>Nome Utente: <?php echo($_SESSION['utenteNome']);?></h3>
                         <h3 style='text-align:center'>Cognome Utente: <?php echo($_SESSION['utenteCognome']);?></h3>
                         <h3 style='text-align:center'>Mail Utente: <?php echo($_SESSION['utenteMail']);?></h3>
-                        <h3 style='text-align:center'>Progetti di cui fai parte:  <?php $db = pg_connect("host=localhost dbname=ProHive user=Leonardo"); 
+                        <h3 style='text-align:center'>Progetti di cui fai parte:  <?php $db = pg_connect("host=localhost dbname=ProHive user=Leonardo");
                             $result = pg_query_params($db, 'select count(*) from progetto p join appartenenza a on a.idprog=p.idprog where a.mail=$1', array($_SESSION['utenteMail']));
                             $row = pg_fetch_row($result);
                             echo($row[0]);
                             pg_close($db);
                             ?>
                         </h3>
-                        <h3 style='text-align:center'>Progetti di cui sei amministratore: <?php $db = pg_connect("host=localhost dbname=ProHive user=Leonardo"); 
+                        <h3 style='text-align:center'>Progetti di cui sei amministratore: <?php $db = pg_connect("host=localhost dbname=ProHive user=Leonardo");
                             $result = pg_query_params($db, 'select count(*) from progetto p join appartenenza a on a.idprog=p.idprog where a.admin=1 AND a.mail=$1', array($_SESSION['utenteMail']));
                             $row = pg_fetch_row($result);
                             echo($row[0]);
                             pg_close($db);
                             ?></h3>
                     </div>
-                    
+
                     <h1 class="small-text" style="color:rgb(250, 250, 250); font-family:inherit; left:6%">Resoconto dei progetti</h1>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-default">
@@ -191,7 +191,7 @@
                                         <button type="button" id='buttAll' class="btn btn-default btn-filter" data-target="all">Tutti</button>
                                     </div>
                                 </div>
-                                <!-- QUI VA BOTTONE ELIMINA SELEZIONATI--> 
+                                <!-- QUI VA BOTTONE ELIMINA SELEZIONATI-->
                                 <div class="btn-group pull-left">
                                     <input type="button" value="Elimina Selezionati" id="deleteButton" style="display:none;" name="deleteButton"  class="btn btn-primary btn-filter" onclick="var retVal = confirm('Sei sicuro di voler cancellare/abbandonare i progetti selezionati?');if(retVal == true){return richiestaEliminazione();}else return false;">
                                     <input type="button" value="Abbandona Selezionati" id="abbandonaButton" style="display:none;" name="deleteButton"  class="btn btn-primary btn-filter" onclick="var retVal = confirm('Sei sicuro di voler abbandonare i progetti selezionati?');if(retVal == true){return richiestaAbbandono();}else return false;">
@@ -205,7 +205,7 @@
                                                                         where  $1 = a.mail AND a.idprog=p.idprog AND u.mail = a.mail";
                                                             $res = pg_query_params($conn, $querySel, array($_SESSION['utenteMail']));
                                                             $progArray = pg_fetch_all($res);
-                                                            
+
                                                             if($progArray == false) {} //Handles empty rows
 
                                                             else {
@@ -214,7 +214,7 @@
                                                                     $year = $parse[2];
                                                                     $month = $parse[1] ;
                                                                     $day = $parse[0];
-                                                                    $rowDaAgg = '<tr name="rowEsistente" data-status="" id="row'.$x.'"> 
+                                                                    $rowDaAgg = '<tr name="rowEsistente" data-status="" id="row'.$x.'">
                                                                     <td>
                                                                     <div class="ckbox">
                                                                     <input name="ck" type="checkbox" id="checkbox' . $x . '">
@@ -223,7 +223,7 @@
                                                                     </td>
                                                                     <td>
                                                                     </td>
-                                                                    <td> 
+                                                                    <td>
                                                                     <div class="media">
                                                                     <a href="#" class="pull-left">
                                                                     <img src="../AddOns/project.png" class="media-photo">
@@ -239,21 +239,21 @@
                                                                     </td>
                                                                     </tr>
                                                                     <script> calcolaStatus(' . $year . ',' . $month . ',' . $day. ','.$x.' );</script>';
-                                                                    
+
                                                                     echo($rowDaAgg);
                                                                 }
                                                             pg_close($conn);
                                                             }
 
                                             ?>
-                                            
+
                                              <tr data-status="" id="rowAgg" style="display:none;">
                                              <td></td>
                                              <td></td>
                                              <td>
                                                  <div class="media">
                                                      <div class="media-body">
-                                                     <form target="_self" method="POST" name='formInserisci' action="inserisci.php" onsubmit="return checkProgInfo();"> 
+                                                     <form target="_self" method="POST" name='formInserisci' action="inserisci.php" onsubmit="return checkProgInfo();">
                                                          <span class="media-meta pull-right">
                                                                 <h4 class="title">Inserisci la data di scadenza</h4>
                                                                 <input type="text" id="dataScad" name="dataScad" size="40" pattern="^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}">
@@ -279,7 +279,7 @@
                         </div>
                     </div>
                 </section>
-                
+
             </div>
         </div>
     </body>

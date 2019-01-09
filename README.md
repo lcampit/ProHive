@@ -17,6 +17,6 @@ Current Features as of ProHive V1.0:
 Coming Features:
 - name editing options, for projects and/or files;
 - mark projects / file as favourite, will always be on top of list;
-- message passing mechanism among co-workers (still not live messaging)
+- message passing mechanism among co-workers (not live messaging, yet)
   
   
